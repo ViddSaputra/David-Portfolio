@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+/* ============================================================
+   FONT IMPORTS
+   ============================================================ */
+
+/* ============================================================
+   DESIGN TOKENS — Light Mode (default)
+   All values live here. Components reference variables only.
+   ============================================================ */
+:root {
+  /* Identity */
+  --accent:          #71D9E2;
+  --accent-muted:    rgba(113, 217, 226, 0.15);
+  --accent-glow:     rgba(113, 217, 226, 0.25);
+
+  /* Backgrounds */
+  --bg-base:         #F7F8FA;       /* near-white, never pure white */
+  --bg-surface:      #FFFFFF;
+  --bg-elevated:     #F2F4F7;       /* one step below surface — stripe sections */
+  --bg-glass:        rgba(255, 255, 255, 0.72);
+
+  /* Text */
+  --text-primary:    #141420;
+  --text-secondary:  #4B5266;
+  --text-muted:      #8E96AA;
+  --text-on-accent:  #0A2A2D;
+
+  /* Borders */
+  --border-subtle:   rgba(113, 217, 226, 0.14);
+  --border-default:  rgba(20, 20, 32, 0.10);
+
+  /* Shadows */
+  --shadow-sm:       0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:       0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg:       0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-accent:   0 8px 32px rgba(113, 217, 226, 0.18);
+
+  /* Badge system */
+  --badge-border:    rgba(113, 217, 226, 0.40);
+  --badge-bg:        rgba(113, 217, 226, 0.08);
+
+  /* Hero frame */
+  --border-frame:    rgba(113, 217, 226, 0.20);
+
+  /* Spacing scale (section rhythm) */
+  --section-py:      6rem;         /* py-24 equivalent */
+  --section-gap:     3rem;         /* gap between section elements */
+}
+
+/* ============================================================
+   DARK MODE TOKENS
+   Only override what changes. Accent stays identical.
+   ============================================================ */
+[data-theme="dark"] {
+  /* Backgrounds — subtle surface lift for depth */
+  --bg-base:         #0D0F14;
+  --bg-surface:      #141720;      /* lifted slightly from #13161E for surface/base contrast */
+  --bg-elevated:     #1C2030;      /* lifted for card depth */
+  --bg-glass:        rgba(16, 18, 26, 0.75); /* slightly lighter, more translucent */
+
+  /* Text — increased brightness ~12% for readability without harshness */
+  --text-primary:    #E8EBF2;      /* unchanged — headings are fine */
+  --text-secondary:  #B8C0D4;      /* was #9DA8C0 — body text, descriptions */
+  --text-muted:      #737D94;      /* was #5C657A — footnotes, helper text */
+  --text-on-accent:  #0A2A2D;
+
+  /* Borders — stronger neutral presence, no aquamarine tint on cards */
+  --border-subtle:   rgba(113, 217, 226, 0.10); /* decorative dividers only */
+  --border-default:  rgba(255, 255, 255, 0.11); /* was 0.07 — card borders now visible */
+  --border-card:     rgba(255, 255, 255, 0.09); /* neutral card border — between subtle and default */
+
+  /* Shadows — slightly stronger for depth */
+  --shadow-sm:       0 1px 3px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.25);
+  --shadow-md:       0 4px 16px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.25);
+  --shadow-lg:       0 8px 32px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.35);
+  --shadow-accent:   0 8px 32px rgba(113, 217, 226, 0.16); /* was 0.12 — hover glow readable */
+
+  /* Badge system — dark mode needs stronger tint for legibility */
+  --badge-border:    rgba(113, 217, 226, 0.35);
+  --badge-bg:        rgba(113, 217, 226, 0.10);
+
+  /* Hero frame — neutral visible border in dark mode */
+  --border-frame:    rgba(255, 255, 255, 0.14);
+}
+
+/* ============================================================
+   TAILWIND v4 THEME EXTENSION
+   Registers custom tokens as Tailwind utilities
+   ============================================================ */
+@theme inline {
+  /* Colors mapped from CSS vars */
+  --color-accent:         var(--accent);
+  --color-accent-muted:   var(--accent-muted);
+  --color-bg-base:        var(--bg-base);
+  --color-bg-surface:     var(--bg-surface);
+  --color-bg-elevated:    var(--bg-elevated);
+  --color-text-primary:   var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted:     var(--text-muted);
+  --color-border-subtle:  var(--border-subtle);
+  --color-border-default: var(--border-default);
+
+  /* Fonts */
+  --font-heading:  'Cormorant Garamond', Georgia, serif;
+  --font-body:     'Inter', system-ui, sans-serif;
+}
+
+/* ============================================================
+   BASE RESETS & GLOBAL STYLES
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Scrollbar — subtle aquamarine accent */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: var(--bg-base); }
+::-webkit-scrollbar-thumb  {
+  background: var(--accent-muted);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Focus ring — accessible, branded */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-muted);
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   Global heading defaults — font is set here, size in components
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ============================================================
+   SHARED ANIMATION UTILITIES
+   Used alongside Framer Motion for CSS-only micro-interactions
+   ============================================================ */
+.transition-base {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass morphism utility — used in Navbar and cards */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Accent underline — used in SectionHeading */
+.accent-line {
+  display: inline-block;
+  position: relative;
+}
+.accent-line::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Gradient text — for special heading moments */
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, #A8EFF5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
