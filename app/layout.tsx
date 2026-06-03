@@ -55,6 +55,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar />
           <main>{children}</main>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
