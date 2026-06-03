@@ -26,6 +26,7 @@ import "@fontsource/inter/300.css"
 import "@fontsource/inter/400.css"
 import "@fontsource/inter/500.css"
 import "@fontsource/inter/600.css"
+import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { Navbar }        from "@/components/layout/Navbar"
 
