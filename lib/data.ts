@@ -88,15 +88,6 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    title:       "Vidd Resto",
-    type:        "Web Application",
-    description: "A full-stack restaurant platform built with Next.js and Tailwind CSS, featuring an intuitive menu interface, ordering flow, and clean responsive design.", // placeholder
-    tech:        ["Next.js", "Tailwind CSS", "Supabase"],
-    github:      "https://github.com/ViddSaputra/Vidd-Resto-Next.js", // placeholder
-    demo:        "https://vidd-resto-next-js.vercel.app", // placeholder
-    thumbnail:   "/images/projects/project_resto.png",
-  },
-  {
     title:       "Toxic Comment Classifier",
     type:        "Machine Learning",
     description: "A collection of small interactive applications built with Python and FastAPI to practice backend development and API design.", // placeholder
@@ -104,6 +95,15 @@ export const PROJECTS: Project[] = [
     github:      "https://github.com/ViddSaputra/toxic-comment-classifier", // placeholder
     demo:        "https://viddwny-toxic-comment-classifier.hf.space",
     thumbnail:   "/images/projects/project_ml.png",
+  },
+  {
+    title:       "Vidd Resto",
+    type:        "Web Application",
+    description: "A full-stack restaurant platform built with Next.js and Tailwind CSS, featuring an intuitive menu interface, ordering flow, and clean responsive design.", // placeholder
+    tech:        ["Next.js", "Tailwind CSS", "Supabase"],
+    github:      "https://github.com/ViddSaputra/Vidd-Resto-Next.js", // placeholder
+    demo:        "https://vidd-resto-next-js.vercel.app", // placeholder
+    thumbnail:   "/images/projects/project_resto.png",
   },
 ]
 
