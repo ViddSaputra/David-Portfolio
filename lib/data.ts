@@ -97,13 +97,13 @@ export const PROJECTS: Project[] = [
     thumbnail:   "/images/projects/project_resto.png",
   },
   {
-    title:       "Fun Games & Calculators",
-    type:        "Web Application",
+    title:       "Toxic Comment Classifier",
+    type:        "Machine Learning",
     description: "A collection of small interactive applications built with Python and FastAPI to practice backend development and API design.", // placeholder
-    tech:        ["Python", "FastAPI", "Tailwind CSS"],
-    github:      "https://github.com/ViddSaputra/Fun-Games-Tools", // placeholder
-    demo:        "https://fun-games-tools-production.up.railway.app",
-    thumbnail:   "/images/projects/fun_games.png",
+    tech:        ["Python", "Scikit-learn", "Streamlit"],
+    github:      "https://github.com/ViddSaputra/toxic-comment-classifier", // placeholder
+    demo:        "https://viddwny-toxic-comment-classifier.hf.space",
+    thumbnail:   "/images/projects/project_ml.png",
   },
 ]
 
