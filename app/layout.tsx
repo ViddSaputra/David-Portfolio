@@ -57,6 +57,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Analytics />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
